@@ -9,3 +9,12 @@ server:
 
 polar:
   greeting: Welcome to local book catalog!
+
+spring:
+  application:
+    name: catalog-service
+  config:
+    import: 'optional:configserver:'
+  cloud:
+    config:
+      uri: http://localhost:8888

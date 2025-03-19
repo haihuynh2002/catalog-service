@@ -21,7 +21,7 @@ repositories {
 }
 
 ext {
-	set('springCloudVersion', "2021.0.9")
+	set('springCloudVersion', "2024.0.0")
 }
 
 configurations {
@@ -34,6 +34,7 @@ dependencies {
 	implementation "org.springframework.boot:spring-boot-starter-web"
 	implementation "org.springframework.boot:spring-boot-starter-validation"
 	testImplementation "org.springframework.boot:spring-boot-starter-test"
+	implementation 'org.springframework.cloud:spring-cloud-starter-config'
 	testRuntimeOnly "org.junit.platform:junit-platform-launcher"
 	testRuntimeOnly "org.springframework.boot:spring-boot-starter-webflux"
 	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
