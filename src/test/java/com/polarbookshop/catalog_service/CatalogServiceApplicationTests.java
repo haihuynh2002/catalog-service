@@ -42,11 +42,12 @@ class CatalogServiceApplicationTests {
     @DynamicPropertySource
     static void dynamicProperties(DynamicPropertyRegistry registry) {
         registry.add("spring.security.oauth2.resourceserver.jwt.issuer-uri",
-                () -> keycloakContainer.getAuthServerUrl() + "/realms/PolarBookshop");
+                () -> keycloakContainer.getAuthServerUrl() + "realms/PolarBookshop");
     }
 
     @BeforeAll
     static void generateAccessTokens() {
+        keycloakContainer.start();
         WebClient webClient = WebClient.builder()
                 .baseUrl(keycloakContainer.getAuthServerUrl() + "/realms/PolarBookshop/protocol/openid-connect/token")
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_FORM_URLENCODED_VALUE)
@@ -108,6 +109,7 @@ class CatalogServiceApplicationTests {
                 )
                 .retrieve()
                 .bodyToMono(KeycloakToken.class)
+                .doOnNext(keycloakToken -> System.out.println(keycloakToken.accessToken()))
                 .block();
     }
 
