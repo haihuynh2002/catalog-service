@@ -5,6 +5,8 @@ import com.polarbookshop.catalog_service.domain.Book;
 import com.polarbookshop.catalog_service.domain.BookService;
 
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("books")
 public class BookController {
+    private static final Logger log =
+            LoggerFactory.getLogger(BookController.class);
 
     private final BookService bookService;
 
@@ -28,6 +32,8 @@ public class BookController {
 
     @GetMapping
     public Iterable<Book> get() {
+        log.info("Fetching the list of books in the catalog");
+
         return bookService.viewBookList();
     }
 
