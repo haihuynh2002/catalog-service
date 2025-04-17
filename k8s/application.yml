@@ -1,5 +1,5 @@
 polar:
-  greeting: Welcome to the book catalog from a development Kubernetes environment!
+  greeting: Welcome to the book catalog synchronized with Argo CD!
 spring:
   datasource:
     url: jdbc:postgresql://polar-postgres/polardb_catalog
