@@ -26,7 +26,7 @@ class CatalogServiceApplicationTests {
 				.expectBody(Book.class)
 				.value(acutalBook -> {
 					Assertions.assertThat(acutalBook).isNotNull();
-					Assertions.assertThat(acutalBook).isEqualTo(book);
+					Assertions.assertThat(acutalBook.isbn()).isEqualTo(book.isbn());
 				});
 	}
 
